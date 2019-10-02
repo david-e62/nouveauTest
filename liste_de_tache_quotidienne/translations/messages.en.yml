@@ -1,0 +1,7 @@
+task:
+    add: add
+    update: update
+    delete: delete
+    listing: list
+users:
+  add: add a user

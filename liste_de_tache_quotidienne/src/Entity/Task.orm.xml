@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entityannotation\Task" table="task">
+    <indexes>
+      <index name="category_id" columns="category_id"/>
+    </indexes>
+    <id name="idTask" type="integer" column="id_task">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nameTask" type="string" column="name_task" length="75" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descriptionTask" type="text" column="description_task" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="createdDateTask" type="datetime" column="created_date_task" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="dueDateTask" type="datetime" column="due_date_task" nullable="false"/>
+    <field name="categoryTask" type="string" column="category_task" length="75" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="priorityTask" type="string" column="priority_task" length="30" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="category" target-entity="Categories" fetch="LAZY">
+      <join-columns>
+        <join-column name="category_id" referenced-column-name="id_category"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

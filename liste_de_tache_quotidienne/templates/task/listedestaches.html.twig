@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} liste des taches {% endblock %}
+
+
+{% block body %}
+  <a href="{{ path('task_ajouter') }}"><button>{{ 'task.add'|trans }}</button></a>
+  

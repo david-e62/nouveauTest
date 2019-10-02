@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} liste des taches {% endblock %}
+
+
+{% block body %}
+<a href="{{ path('app_logout') }}"><button>logout</button></a>
+<a href="{{ path('task_ajouter') }}"><button>{{ 'task.add'|trans }}</button></a>
+
+
+
+{% for flash_message in
+  app.session.flashbag.get('notice') %}
+  <div class="alert alert-success">
+     {{ flash_message }}
+     </div>
+     {% endfor %}
+
+ <table id="example" class="table table-striped" style="width:100%" >
+ <thead> 
+ <tr>
+ <th>id de la tache</th>
+ <th>nom de la tache</th>
+ <th>date de la tache</th>
+ <th>priorite de la categorie</th>
+ <th>description de la tache</th>
+ </tr>
+ </thead>
+
+ <tbody>
+ {% if tasks is defined %}
+   {% for task in tasks %}
+   <tr>
+       <th scope="row">{{ task.idTask }}</th>
+       <td style="text-align:center"> {{ task.nameTask }}</td>
+       <td style="text-align:center"> {{ task.dueDateTask|date('d/m/y H:i')}}</td>
+       <td style="text-align:center"> {{ task.priorityTask }}</td>
+       <td style="text-align:center"> {{ task.category.getLibelleCategory() }}</td>
+       <td><a href="{{ path('task_modifier',{id:task.idTask}) }}"><button>Modifier</button></a></td>
+        <td><a href="{{ path('task_supprimer',{id:task.idTask}) }}"><button>Supprimer</button></a></td>
+       
+   </tr>
+   {% endfor %}
+   {% endif %}
+   </tbody>
+   </table>
+
+ {% endblock %}

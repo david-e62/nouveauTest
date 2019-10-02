@@ -1,0 +1,10 @@
+task:
+    add: ajouter
+    update: modifier
+    delete: supprimer
+    listing: liste
+    added: tache ajouter
+    updated: tache modifier
+    deleted: tache supprimer
+# users:
+#   add: ajouter un utilisateur
